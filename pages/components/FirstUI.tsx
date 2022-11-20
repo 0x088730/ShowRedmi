@@ -65,13 +65,26 @@ const FirstUI = () => {
           </div>
         </div>
 
-        <div style={{ display: showIntro ? 'block' : 'none' }} className="absolute top-0 left-0 z-99">
-          <video id="videoDetail" className="w-screen h-100">
-            <source src="/assets/media/opening_vid_gayeng.mp4" type="video/mp4" />
+        {/* <div style={{ display: showIntro ? 'block' : 'none' }} className="absolute top-0 left-0 z-99">
+          <video id="videoDetail" className="w-screen h-100" muted>
+            <source src="/assets/media/new_video.mp4" type="video/mp4" />
           </video>
+        </div> */}
+
+          <div
+          className="video-detail fixed top-0 left-0 w-screen h-screen bg-black  "
+          style={{ display: showIntro ? 'block' : 'none' }}
+        >
+          <div className="relative w-screen h-screen">
+            <video id="videoDetail" className="w-screen h-screen" muted={showIntro ? false : true}>
+              <source src="/assets/media/new_video.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
 
-        <div style={{ display: showIntro ? 'block' : 'none' }} className="go-button absolute left-0 bottom-16 w-screen h-auto">
+
+
+        <div style={{ display: showIntro ? 'block' : 'none' }} className="go-button absolute left-0 bottom-16 w-screen h-auto z-99">
           <div className="w-screen flex justify-center">
             <button className="relative w-[114px] h-[114px] flex justify-center items-center pointer-events-auto"
               onClick={() => changeShowState()}
@@ -96,5 +109,7 @@ const FirstUI = () => {
     </>
   )
 }
+
+
 
 export default FirstUI
