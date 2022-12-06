@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Suspense, useEffect, useState } from "react";
 
-import useStore from "../helpers/store";
+import useStore from '../helpers/store';
 
 import { Environment, Html, useProgress, Loader } from "@react-three/drei";
 // import CustomLoader from './components/CustomLoader'
@@ -28,6 +28,7 @@ import PopupUI3 from "./components/PopupUI3";
 import PopupUI4 from "./components/PopupUI4";
 import { useRouter } from "next/router";
 import PopupUI5 from "./components/PopupUI5";
+import Link from 'next/link'
 
 function loadStorage() {
   if (localStorage.getItem("hairStyle") !== null) {
@@ -107,19 +108,72 @@ const Home: NextPage = () => {
   const date = new Date();
   const mode =
     router.query["mode"] +
-    `?${date.getFullYear()}${
-      date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()
-    }${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}${
-      date.getHours() < 10 ? "0" + date.getHours() : date.getHours()
-    }${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}${
-      date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
+    `?${date.getFullYear()}${date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()
+    }${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()
+    }${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}${date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
     }`;
 
   useEffect(() => {
     loadStorage();
   }, []);
 
+  useEffect(() => {
+    // The counter changed!
+    console.log('router.query', router.query)
+    const goto = router.query.goto;
+    switch (goto) {
+      case 'lobby':
+        useStore.setState({ goto: 'lobby' })
+        console.log('lobby')
+        useStore.setState({ playerCameraRotation: [-6, 1, 3] })
+        useStore.setState({ playerInitialPosition: [-6, 0, 0] })
+        break;
+      case 'bigscreen':
+        console.log('bigscreen')
+        useStore.setState({ goto: 'bigscreen' })
+        useStore.setState({ playerCameraRotation: [-6, 1, 3] })
+        useStore.setState({ playerInitialPosition: [1.8930402994155884, -1.6213771104812622, -10.819884300231934] })
+        break;
+      case 'stage':
+        console.log('stage')
+        useStore.setState({ goto: 'stage' })
+        useStore.setState({ playerCameraRotation: [-6, 6, 3] })
+        useStore.setState({ playerInitialPosition: [-32.26596450805664, -1.7329879999160767, -18.50287437438965] })
+        break;
+
+      default:
+        break;
+    }
+  }, [router.query.goto])
+
   const uiStep: number = useStore((s) => s.uiStep);
+  const goto: string = useStore((s) => s.goto);
+
+  useEffect(() => {
+    console.log('---------------', goto)
+  }, [goto])
+
+  const getPlayerRotation = (goto_: string) => {
+    let angle;
+    switch (goto_) {
+      case 'lobby':
+        angle = Math.PI
+        break;
+      case 'bigscreen':
+        angle = Math.PI / 0.37
+        break;
+      case 'stage':
+        angle = Math.PI / 0.75
+        break;
+      case '':
+        angle = Math.PI
+        break;
+
+      default:
+        break;
+    }
+    return angle
+  }
 
   return (
     <main
@@ -167,8 +221,9 @@ const Home: NextPage = () => {
               />
 
               <AvatarPlayer
-                position={[-6, -0.13, 0]}
-                rotation={[0, uiStep === 2 ? 0 : Math.PI, 0]}
+                // position={[-6, -0.13, 0]}
+                // rotation={[0, uiStep === 2 ? 0 : Math.PI/0.75, 0]}
+                rotation={[0, uiStep === 2 ? 0 : getPlayerRotation(goto), 0]}
                 scale={[1, 1, 1]}
                 visible={uiStep === 2 || uiStep === 4 ? true : false}
                 avatarSetting={uiStep === 2 ? true : false}

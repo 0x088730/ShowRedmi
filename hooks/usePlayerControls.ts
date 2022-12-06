@@ -4,7 +4,7 @@ import useStore from '../helpers/store'
 
 const moveFieldByKey = (key: string) => {
 
-  const keys:any = {
+  const keys: any = {
     ArrowUp: 'forward',
     ArrowLeft: 'left',
     ArrowDown: 'backward',
@@ -28,9 +28,9 @@ const usePlayerControls = () => {
     right: false,
     jump: false,
     speed: 2.5
-  })  
+  })
 
-  const startWorld:boolean = useStore((s) => s.startWorld)
+  const startWorld: boolean = useStore((s) => s.startWorld)
   const uiLockRef = useRef(startWorld)
 
   useEffect(() => {
@@ -52,6 +52,8 @@ const usePlayerControls = () => {
             ...m,
             [moveFieldByKey(e.code)]: true
           }))
+          useStore.setState({ goto: '' });
+          useStore.setState({ playerCameraRotation: [-6, 1, 3] })
           return
         case 'ShiftLeft':
           setMovement((m) => ({
