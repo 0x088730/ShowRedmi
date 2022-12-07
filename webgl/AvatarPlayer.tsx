@@ -233,8 +233,8 @@ export default function Avatar(props: any) {
         enablePan={true}
         zoomSpeed={0.3}
       />
-      <mesh ref={avatarRef} visible={props.visible} >
-        <primitive object={gltf.scene} scale={props.scale} ref={modelRef} rotation={props.rotation} />
+      <mesh ref={avatarRef} visible={props.visible}  >
+        <primitive object={gltf.scene} scale={props.scale} position={[0,0.3,0]} ref={modelRef} rotation={props.rotation} />
       </mesh>
     </>
   )
