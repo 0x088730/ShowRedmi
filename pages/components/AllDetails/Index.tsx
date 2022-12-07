@@ -10,7 +10,7 @@ import TrousersStyle from "./TrousersStyle"
 const AllDetails = () => {
 
   return (
-    <div className="absolute bottom-[100px] md:bottom-[2000px] md:top-24 left-0 md:left-[280px] w-screen md:w-[200px] ">
+    <div className="absolute bottom-[170px] md:bottom-[2000px] md:top-24 left-0 md:left-[280px] w-screen md:w-[200px] ">
       <div className="relative md:h-auto pointer-events-auto">
         <HairStyle/>
         <Glasses/>
