@@ -36,14 +36,14 @@ const FirstUI = () => {
 
         <div style={{ display: showIntro ? 'none' : 'block' }} className="absolute top-0 left-0 w-screen h-screen">
           <div className="flex w-screen h-screen justify-center items-center">
-            <div className="text-white text-[40px] text-center leading-[40px]">
+            <div className="text-white text-[40px] text-center leading-[40px]" style={{ paddingBottom: '100px' }}>
               Be Our Guest!<br /><br />
               Virtual Showroom
             </div>
           </div>
         </div>
 
-        <div style={{ display: showIntro ? 'none' : 'block' }} className="go-button absolute left-0 bottom-16 w-screen h-auto">
+        <div style={{ display: showIntro ? 'none' : 'block' }} className="go-button absolute left-0 bottom-32 w-screen h-auto">
           <div className="w-screen flex justify-center">
             <button className="relative w-[114px] h-[114px] flex justify-center items-center pointer-events-auto"
               onClick={() => handleSetShowIntro()}
@@ -71,7 +71,7 @@ const FirstUI = () => {
           </video>
         </div> */}
 
-          <div
+        <div
           className="video-detail fixed top-0 left-0 w-screen h-screen bg-black  "
           style={{ display: showIntro ? 'block' : 'none' }}
         >
@@ -84,7 +84,7 @@ const FirstUI = () => {
 
 
 
-        <div style={{ display: showIntro ? 'block' : 'none' }} className="go-button absolute left-0 bottom-16 w-screen h-auto z-99">
+        <div style={{ display: showIntro ? 'block' : 'none' }} className="go-button absolute left-0 bottom-32 w-screen h-auto z-99">
           <div className="w-screen flex justify-center">
             <button className="relative w-[114px] h-[114px] flex justify-center items-center pointer-events-auto"
               onClick={() => changeShowState()}
@@ -109,7 +109,5 @@ const FirstUI = () => {
     </>
   )
 }
-
-
 
 export default FirstUI
