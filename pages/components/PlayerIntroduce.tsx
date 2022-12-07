@@ -143,7 +143,7 @@ const PlayerIntroduce = () => {
           </div>          
         </div>
 
-        <div className="absolute bottom-16 md:bottom-24 left-0 w-screen overflow-hidden">
+        <div className="absolute bottom-32 md:bottom-24 left-0 w-screen overflow-hidden">
           <div className="mx-auto w-[114px]">
             <button className="relative w-[114px] h-[114px] flex justify-center items-center pointer-events-auto"
                 onClick={()=>changeShowState()}
