@@ -221,7 +221,7 @@ const Home: NextPage = () => {
               />
 
               <AvatarPlayer
-                // position={[-6, -0.13, 0]}
+                position={[-6, -0.13, 0]}
                 // rotation={[0, uiStep === 2 ? 0 : Math.PI/0.75, 0]}
                 rotation={[0, uiStep === 2 ? 0 : getPlayerRotation(goto), 0]}
                 scale={[1, 1, 1]}
