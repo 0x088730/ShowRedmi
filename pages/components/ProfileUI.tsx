@@ -68,9 +68,9 @@ const ProfileUI = () => {
         <div className="absolute top-0 left-0 w-screen">
           <div className="flex w-screen justify-center">
             <div className="p-4">
-              <div className="text-gray-300 text-[20px] mt-4 text-center">
+              {/* <div className="text-gray-300 text-[20px] mt-4 text-center">
                 Creating Avatar
-              </div>
+              </div> */}
               <div className="text-black text-[14px] mt-2.5 text-center md:hidden">
                 Slide right/left to view model option setup
               </div>
@@ -110,7 +110,7 @@ const ProfileUI = () => {
         
         <AllDetails/>
 
-        <div className="absolute left-0 bottom-10 md:bottom-16 w-screen">
+        <div className="absolute left-0 bottom-24 md:bottom-16 w-screen">
           <div className="w-screen flex justify-center">
             <div className="hidden md:block">
               <button className="relative w-[114px] h-[114px] flex justify-center items-center pointer-events-auto" onClick={()=>moveShowroom()}>
